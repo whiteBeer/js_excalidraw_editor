@@ -1,0 +1,25 @@
+# Редактор схем и совместная правка. Свой контейнер, не часть фронта.
+# Отдаёт /api.js и страницу редактора. Локально http://localhost:3010.
+# На чужом хосте nginx фронта проксирует /board-relay.
+# Сцену relay пишет в API бэкенда (nginx_web в project-net).
+services:
+  excalidraw-editor:
+    image: js_excalidraw_editor
+    build:
+      context: .
+    container_name: js_excalidraw_editor
+    restart: unless-stopped
+    ports:
+      - "3010:3010"
+    environment:
+      BOARD_RELAY_PORT: "3010"
+      BOARD_API_URL: http://nginx_web
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - project-net
+
+networks:
+  project-net:
+    external: true
+    name: project-net

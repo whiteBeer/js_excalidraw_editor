@@ -1,0 +1,20 @@
+{
+  "name": "js_excalidraw_editor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "start": "node server.mjs",
+    "test": "node --test merge.test.mjs boardSync.test.mjs route.test.mjs"
+  },
+  "dependencies": {
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "@excalidraw/excalidraw": "0.18.1",
+    "@vitejs/plugin-react": "^5.0.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "vite": "^6.0.0"
+  }
+}
